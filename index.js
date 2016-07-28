@@ -3,10 +3,12 @@
  * @copyright Stanislav Kalashnik <darkpark.main@gmail.com>
  */
 
+/* eslint no-path-concat: 0 */
+
 'use strict';
 
-var List = require('stb-list'),
-    CheckBox = require('stb-checkbox'),
+var List = require('stb-component-list'),
+    CheckBox = require('stb-component-checkbox'),
     counter = 0;
 
 
@@ -89,7 +91,7 @@ RadioList.prototype.group = 0;
  * Default render function
  *
  * @param {Element} $item in list
- * @param {array} data to render layout element
+ * @param {Array} data to render layout element
  * @param {string} [data.title] title of checkbox
  * @param {boolean} [data.state] state of checkbox: checked or not
  * @param {string} [data.value] special value of item

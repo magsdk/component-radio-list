@@ -1,7 +1,7 @@
 {
     "name": "mag-component-radio-list",
     "version": "1.0.0",
-    "description": "Base radio-list implementation.",
+    "description": "Base radio list implementation.",
     "author": {
         "name": "Stanislav Kalashnik",
         "email": "darkpark.main@gmail.com"
@@ -16,8 +16,8 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "stb-list": "stbsdk/list",
-        "stb-checkbox": "stbsdk/checkbox"
+        "stb-component-list": "stbsdk/component-list",
+        "stb-component-checkbox": "stbsdk/component-checkbox"
     },
     "devDependencies": {
         "mag-eslint-config": "magsdk/eslint-config"
@@ -28,7 +28,8 @@
         "framework",
         "visual",
         "component",
-        "radio-list"
+        "radio",
+        "list"
     ],
     "license": "MIT"
 }
