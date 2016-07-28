@@ -1,0 +1,34 @@
+{
+    "name": "mag-component-radio-list",
+    "version": "1.0.0",
+    "description": "Base radio-list implementation.",
+    "author": {
+        "name": "Stanislav Kalashnik",
+        "email": "darkpark.main@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@192.168.1.222:/web/magsdk/component-radio-list"
+    },
+    "scripts": {
+        "sass": "node-sass --indent-width 4 --include-path ../../.. sass/develop.480.scss css/develop.480.css && node-sass --indent-width 4 --include-path ../../.. sass/release.480.scss css/release.480.css && node-sass --indent-width 4 --include-path ../../.. sass/develop.576.scss css/develop.576.css && node-sass --indent-width 4 --include-path ../../.. sass/release.576.scss css/release.576.css && node-sass --indent-width 4 --include-path ../../.. sass/develop.720.scss css/develop.720.css && node-sass --indent-width 4 --include-path ../../.. sass/release.720.scss css/release.720.css && node-sass --indent-width 4 --include-path ../../.. sass/develop.1080.scss css/develop.1080.css && node-sass --indent-width 4 --include-path ../../.. sass/release.1080.scss css/release.1080.css",
+        "lint": "eslint *.js",
+        "jsdoc": "jsdoc --destination doc *.js readme.md"
+    },
+    "dependencies": {
+        "stb-list": "stbsdk/list",
+        "stb-checkbox": "stbsdk/checkbox"
+    },
+    "devDependencies": {
+        "mag-eslint-config": "magsdk/eslint-config"
+    },
+    "keywords": [
+        "mag",
+        "magsdk",
+        "framework",
+        "visual",
+        "component",
+        "radio-list"
+    ],
+    "license": "MIT"
+}

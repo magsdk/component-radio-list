@@ -1,0 +1,9 @@
+/* mag-component-radio-list: release */
+.component.list.radioList > .item .checkBoxWrapper > .component.checkBox {
+    display: block; }
+    .component.list.radioList > .item .checkBoxWrapper > .component.checkBox:after {
+        font-family: 'icons';
+        display: block;
+        content: 'W'; }
+    .component.list.radioList > .item .checkBoxWrapper > .component.checkBox.checked:after {
+        content: 'X'; }
