@@ -73,7 +73,7 @@ function RadioList ( config ) {
                 $last: self.$checkedData,
                 $curr: item
             });
-            self.$checkedData.state = false;
+            if ( self.$checkedData ) { self.$checkedData.state = false; }
             self.$checkedData = item.data;
         }
 
@@ -133,19 +133,19 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
 
 };
 
-RadioList.prototype.setData = function ( config ) {
-    var i;
-
-    List.prototype.setData.call(this, config);
-
-    for ( i = 0; i < this.data.length; i++ ) {
-        if ( this.data[i].state ) {
-            this.$checkedData = this.data[i];
-            break;
-        }
-    }
-
-};
+// RadioList.prototype.setData = function ( config ) {
+//     var i;
+//
+//     List.prototype.setData.call(this, config);
+//
+//     for ( i = 0; i < this.data.length; i++ ) {
+//         if ( this.data[i].state ) {
+//             this.$checkedData = this.data[i];
+//             break;
+//         }
+//     }
+//
+// };
 
 RadioList.prototype.renderItem = RadioList.prototype.renderItemDefault;
 
