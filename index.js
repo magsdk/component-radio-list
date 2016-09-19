@@ -7,7 +7,7 @@
 
 'use strict';
 
-var List = require('stb-component-list'),
+var List = require('mag-component-list'),
     CheckBox = require('stb-component-checkbox'),
     counter = 0;
 

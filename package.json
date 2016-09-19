@@ -16,7 +16,7 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "stb-component-list": "stbsdk/component-list",
+        "mag-component-list": "magsdk/component-list",
         "stb-component-checkbox": "stbsdk/component-checkbox"
     },
     "devDependencies": {
