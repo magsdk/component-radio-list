@@ -21,7 +21,7 @@
         "stb-component-checkbox": "stbsdk/component-checkbox"
     },
     "devDependencies": {
-        "eslint": "2.*.*",
+        "eslint": "3.*.*",
         "mag-eslint-config": "magsdk/eslint-config"
     },
     "keywords": [
