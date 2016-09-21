@@ -3,5 +3,7 @@
 
 $DEVELOP: true;
 
-@import "vars/720";
+@import "../node_modules/stb-component-checkbox/sass/vars/720";
+@import "../node_modules/mag-component-list/sass/vars/720";
+
 @import "main";

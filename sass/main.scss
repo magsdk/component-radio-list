@@ -3,6 +3,8 @@
 
 @import "body";
 @import "../node_modules/stb-component/sass/main";
+@import "../node_modules/stb-component-checkbox/sass/main";
+@import "../node_modules/mag-component-list/sass/main";
 
 .mag-component-footer {
     @include stb-component-release;

@@ -3,5 +3,7 @@
 
 $DEVELOP: false;
 
-@import "vars/480";
+@import "../node_modules/stb-component-checkbox/sass/vars/480";
+@import "../node_modules/mag-component-list/sass/vars/480";
+
 @import "main";
