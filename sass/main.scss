@@ -1,19 +1,14 @@
 // @license The MIT License (MIT)
 // @copyright Stanislav Kalashnik <darkpark.main@gmail.com>
 
-/* mag-component-radio-list: release */
-.component.list.radioList {
-    > .item {
-        .checkBoxWrapper > .component.checkBox {
-            display : block;
-            &:after {
-                font-family: 'icons';
-                display: block;
-                content: 'W';
-            }
-            &.checked:after {
-                content: 'X';
-            }
-        }
+@import "body";
+@import "../node_modules/stb-component/sass/main";
+
+.mag-component-footer {
+    @include stb-component-release;
+    @include mag-component-radio-list;
+
+    @if $DEVELOP {
+        @include stb-component-develop;
     }
 }

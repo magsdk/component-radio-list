@@ -1,9 +1,17 @@
-/* mag-component-radio-list: release */
-.component.list.radioList > .item .checkBoxWrapper > .component.checkBox {
-    display: block; }
-    .component.list.radioList > .item .checkBoxWrapper > .component.checkBox:after {
-        font-family: 'icons';
-        display: block;
-        content: 'W'; }
-    .component.list.radioList > .item .checkBoxWrapper > .component.checkBox.checked:after {
-        content: 'X'; }
+.mag-component-footer {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline: 1px dashed #005000;
+    outline-offset: -1px; }
+    .mag-component-footer.hidden {
+        display: none; }
+    .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox {
+        display: block; }
+        .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox:after {
+            font-family: 'icons';
+            display: block;
+            content: 'W'; }
+        .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox.checked:after {
+            content: 'X'; }
+    .mag-component-footer.focus {
+        outline: 1px dashed red; }

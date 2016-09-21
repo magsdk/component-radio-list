@@ -48,7 +48,7 @@ function RadioList ( config ) {
      */
     this.$checkedData = null;
 
-    config.className = 'radioList ' + (config.className || '');
+    //config.className = 'radioList ' + (config.className || '');
 
     List.call(this, config);
 
@@ -84,6 +84,9 @@ function RadioList ( config ) {
 
 RadioList.prototype = Object.create(List.prototype);
 RadioList.prototype.constructor = RadioList;
+
+// set component name
+RadioList.prototype.name = 'mag-component-radio-list';
 
 RadioList.prototype.group = 0;
 
