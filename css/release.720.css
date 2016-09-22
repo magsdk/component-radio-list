@@ -76,16 +76,16 @@
             text-align: center;
             vertical-align: middle; }
 
-.mag-component-footer {
+.mag-component-radio-list {
     box-sizing: border-box;
     -webkit-box-sizing: border-box; }
-    .mag-component-footer.hidden {
+    .mag-component-radio-list.hidden {
         display: none; }
-    .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox {
+    .mag-component-radio-list > .item .checkBoxWrapper > .stb-component-checkbox {
         display: block; }
-        .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox:after {
+        .mag-component-radio-list > .item .checkBoxWrapper > .stb-component-checkbox:after {
             font-family: 'icons';
             display: block;
             content: 'W'; }
-        .mag-component-footer > .item .checkBoxWrapper > .stb-component-checkbox.checked:after {
+        .mag-component-radio-list > .item .checkBoxWrapper > .stb-component-checkbox.checked:after {
             content: 'X'; }
