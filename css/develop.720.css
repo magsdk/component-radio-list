@@ -1,100 +1,35 @@
-.stb-component-checkbox {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    border: 2px solid #888;
-    background-color: #bbb;
-    vertical-align: bottom;
-    outline: 1px dashed #005000;
-    outline-offset: -1px; }
-    .stb-component-checkbox.hidden {
-        display: none; }
-    .stb-component-checkbox.checked {
-        background-color: orange; }
-    .stb-component-checkbox.focus {
-        outline: 1px dashed red; }
-
-.stb-component-list {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    background-color: #333;
-    width: 100%;
-    outline: 1px dashed #005000;
-    outline-offset: -1px; }
-    .stb-component-list.hidden {
-        display: none; }
-    .stb-component-list > .item {
-        cursor: pointer;
-        padding: 0 8px;
-        vertical-align: middle;
-        height: 48px;
-        line-height: 48px; }
-        .stb-component-list > .item.mark {
-            background-color: green;
-            color: black; }
-        .stb-component-list > .item.focus {
-            background-color: orange;
-            color: black; }
-        .stb-component-list > .item.focus.mark {
-            background-color: #ae7200;
-            color: white; }
-    .stb-component-list.horizontal {
-        display: table;
-        table-layout: fixed;
-        width: 100%; }
-        .stb-component-list.horizontal > .item {
-            display: table-cell;
-            text-align: center;
-            vertical-align: middle; }
-    .stb-component-list.focus {
-        outline: 1px dashed red; }
-
-.mag-component-list {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    background-color: #333;
-    width: 100%;
-    outline: 1px dashed #005000;
-    outline-offset: -1px; }
-    .mag-component-list.hidden {
-        display: none; }
-    .mag-component-list .item {
-        cursor: pointer;
-        padding: 0 8px;
-        vertical-align: middle;
-        height: 48px;
-        line-height: 48px; }
-        .mag-component-list .item.mark {
-            background-color: green;
-            color: black; }
-        .mag-component-list .item.focus {
-            background-color: orange;
-            color: black; }
-        .mag-component-list .item.focus.mark {
-            background-color: #ae7200;
-            color: white; }
-    .mag-component-list .mag-component-list.horizontal {
-        display: table;
-        table-layout: fixed;
-        width: 100%; }
-        .mag-component-list .mag-component-list.horizontal > .item {
-            display: table-cell;
-            text-align: center;
-            vertical-align: middle; }
-    .mag-component-list.focus {
-        outline: 1px dashed red; }
-
 .mag-component-radio-list {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    background-color: #333;
+    width: 100%;
     outline: 1px dashed #005000;
     outline-offset: -1px; }
     .mag-component-radio-list.hidden {
         display: none; }
+    .mag-component-radio-list > .body > .item {
+        cursor: pointer;
+        padding: 0 8px;
+        vertical-align: middle;
+        height: 48px;
+        line-height: 48px; }
+        .mag-component-radio-list > .body > .item.mark {
+            background-color: green;
+            color: black; }
+        .mag-component-radio-list > .body > .item.focus {
+            background-color: orange;
+            color: black; }
+        .mag-component-radio-list > .body > .item.focus.mark {
+            background-color: #ae7200;
+            color: white; }
+    .mag-component-radio-list.horizontal {
+        display: table;
+        table-layout: fixed;
+        width: 100%; }
+        .mag-component-radio-list.horizontal > .item {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle; }
     .mag-component-radio-list > .item .checkBoxWrapper > .stb-component-checkbox {
         display: block; }
         .mag-component-radio-list > .item .checkBoxWrapper > .stb-component-checkbox:after {

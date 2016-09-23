@@ -3,11 +3,11 @@
 
 @import "body";
 @import "../node_modules/stb-component/sass/main";
-@import "../node_modules/stb-component-checkbox/sass/main";
-@import "../node_modules/mag-component-list/sass/main";
+@import "../node_modules/mag-component-list/sass/body";
 
 .mag-component-radio-list {
     @include stb-component-release;
+    @include mag-component-list;
     @include mag-component-radio-list;
 
     @if $DEVELOP {
