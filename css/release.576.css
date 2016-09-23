@@ -52,26 +52,26 @@
     width: 100%; }
     .mag-component-list.hidden {
         display: none; }
-    .mag-component-list > .item {
+    .mag-component-list .item {
         cursor: pointer;
         padding: 0 5px;
         vertical-align: middle;
         height: 38.4px;
         line-height: 38.4px; }
-        .mag-component-list > .item.mark {
+        .mag-component-list .item.mark {
             background-color: green;
             color: black; }
-        .mag-component-list > .item.focus {
+        .mag-component-list .item.focus {
             background-color: orange;
             color: black; }
-        .mag-component-list > .item.focus.mark {
+        .mag-component-list .item.focus.mark {
             background-color: #ae7200;
             color: white; }
-    .mag-component-list.horizontal {
+    .mag-component-list .mag-component-list.horizontal {
         display: table;
         table-layout: fixed;
         width: 100%; }
-        .mag-component-list.horizontal > .item {
+        .mag-component-list .mag-component-list.horizontal > .item {
             display: table-cell;
             text-align: center;
             vertical-align: middle; }

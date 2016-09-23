@@ -2,17 +2,17 @@
 // @copyright Stanislav Kalashnik <darkpark.main@gmail.com>
 
 @mixin mag-component-radio-list {
-  > .item {
-    .checkBoxWrapper > .stb-component-checkbox {
-      display : block;
-      &:after {
-        font-family: 'icons';
-        display: block;
-        content: 'W';
-      }
-      &.checked:after {
-        content: 'X';
-      }
+    > .item {
+        .checkBoxWrapper > .stb-component-checkbox {
+            display: block;
+            &:after {
+                font-family: 'icons';
+                display: block;
+                content: 'W';
+            }
+            &.checked:after {
+                content: 'X';
+            }
+        }
     }
-  }
 }
