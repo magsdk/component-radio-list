@@ -3,16 +3,18 @@
 
 @mixin mag-component-radio-list {
     > .item {
-        .checkBoxWrapper > .stb-component-checkbox {
+        .checkBoxWrapper >
+        div {
+            @include spa-component-checkbox;
             display: block;
-            &:after {
-                font-family: 'icons';
-                display: block;
-                content: 'W';
-            }
-            &.checked:after {
-                content: 'X';
-            }
+            //&:after {
+            //    font-family: 'icons';
+            //    display: block;
+            //    content: 'W';
+            //}
+            //&.checked:after {
+            //    content: 'X';
+            //}
         }
     }
 }
