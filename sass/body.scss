@@ -5,7 +5,6 @@
     > .item {
         .checkBoxWrapper >
         div {
-            @include spa-component-checkbox;
             display: block;
             //&:after {
             //    font-family: 'icons';

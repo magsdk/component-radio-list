@@ -22,17 +22,6 @@
             vertical-align: middle; }
     .mag-component-radio-list > .item .checkBoxWrapper >
 div {
-        cursor: pointer;
-        display: inline-block;
-        width: 39px;
-        height: 39px;
-        line-height: 39px;
-        border: 2px solid #888;
-        background-color: #bbb;
-        vertical-align: bottom;
         display: block; }
-        .mag-component-radio-list > .item .checkBoxWrapper >
-div.checked {
-            background-color: orange; }
     .mag-component-radio-list.focus {
         outline: 1px dashed red; }

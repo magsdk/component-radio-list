@@ -20,15 +20,4 @@
             vertical-align: middle; }
     .mag-component-radio-list > .item .checkBoxWrapper >
 div {
-        cursor: pointer;
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        border: 2px solid #888;
-        background-color: #bbb;
-        vertical-align: bottom;
         display: block; }
-        .mag-component-radio-list > .item .checkBoxWrapper >
-div.checked {
-            background-color: orange; }
