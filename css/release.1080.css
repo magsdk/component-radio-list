@@ -1,7 +1,6 @@
 .mag-component-radio-list {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    background-color: #333;
     width: 100%; }
     .mag-component-radio-list.hidden {
         display: none; }
