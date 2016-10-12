@@ -8,7 +8,7 @@
 'use strict';
 
 var List = require('mag-component-list'),
-    CheckBox = require('stb-component-checkbox'),
+    CheckBox = require('spa-component-checkbox'),
     counter = 0;
 
 
@@ -18,18 +18,7 @@ var List = require('mag-component-list'),
  * @constructor
  * @extends List
  *
- * @param {Object}   [config={}]          init parameters (all inherited from the parent)
- *
- * @example
- * var RadioList = require('../stb/ui/radio.list'),
- *     rList = new RadioList({
- *         focusIndex:0,
- *         data:[
- *            {state:false, title:'Some title', value:'string'},
- *            {state:true, title:'Some title 1', value:'number'},
- *            {state:false, title:'Some title 2', value:'object'}
- *         ]
- *     });
+ * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function RadioList ( config ) {
     var self = this;

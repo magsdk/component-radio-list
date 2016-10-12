@@ -19,10 +19,16 @@ npm install mag-component-radio-list
 
 ## Usage ##
 
-Add the singleton to the scope:
-
 ```js
-var radio-list = require('mag-component-radio-list');
+var RadioList = require('mag-component-radio-list'),
+    radioList = new RadioList({
+        focusIndex: 0,
+        data: [
+            {state: false, title: 'Some title 1', value: 'string'},
+            {state: true, title: 'Some title 2', value: 'number'},
+            {state: false, title: 'Some title 3', value: 'object'}
+        ]
+    });
 ```
 
 
