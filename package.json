@@ -22,7 +22,7 @@
     },
     "devDependencies": {
         "eslint": "3.*.*",
-        "mag-eslint-config": "magsdk/eslint-config"
+        "mag-eslint-config": "1.*.*"
     },
     "keywords": [
         "mag",
