@@ -1,6 +1,6 @@
 {
     "name": "mag-component-radio-list",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Base radio list implementation.",
     "author": {
         "name": "Stanislav Kalashnik",
@@ -17,7 +17,7 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "mag-component-list": "magsdk/component-list",
+        "mag-component-list": "^1.0.0",
         "stb-component": "stbsdk/component",
         "spa-component-checkbox": "1.*.*"
     },
