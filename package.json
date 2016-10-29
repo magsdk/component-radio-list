@@ -19,7 +19,7 @@
     "dependencies": {
         "mag-component-list": "magsdk/component-list",
         "stb-component": "1.*.*",
-        "spa-component-checkbox": "spasdk/component-checkbox"
+        "spa-component-checkbox": "1.*.*"
     },
     "devDependencies": {
         "eslint": "3.*.*",
