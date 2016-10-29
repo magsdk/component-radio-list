@@ -1,6 +1,6 @@
 {
     "name": "mag-component-radio-list",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Base radio list implementation.",
     "author": {
         "name": "Stanislav Kalashnik",

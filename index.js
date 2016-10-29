@@ -65,9 +65,7 @@ function RadioList ( config ) {
             if ( self.$checkedData ) { self.$checkedData.state = false; }
             self.$checkedData = item.data;
         }
-
     });
-
 }
 
 
@@ -78,6 +76,7 @@ RadioList.prototype.constructor = RadioList;
 RadioList.prototype.name = 'mag-component-radio-list';
 
 RadioList.prototype.group = 0;
+
 
 /**
  * Default render function
@@ -122,7 +121,6 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
 
 
     $item.appendChild(table);
-
 };
 
 // RadioList.prototype.setData = function ( config ) {
