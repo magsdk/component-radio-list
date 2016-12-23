@@ -101,6 +101,7 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
     if ( data.state ) {
         check.set(true);
         // set link to checked item
+        this.$checkedData = data;
     }
 
     table.appendChild(tr);
