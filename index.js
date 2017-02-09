@@ -21,49 +21,65 @@ var List = require('mag-component-list'),
  * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function RadioList ( config ) {
-    var self = this;
+    var self = this,
+        groupName = 'radio-list-' + counter++,
+        index;
+
 
     /**
-     * Checkbox group name
+     * Array of checkbox components
      *
-     * @type {string}
+     * @type {Array}
      */
-    this.group = 'group ' +  counter++;
+    this.group = [];
 
     /**
      * Link to checked item
      *
      * @type {Element}
      */
-    this.$checkedData = null;
+    this.checkedData = null;
 
-    //config.className = 'radioList ' + (config.className || '');
+    /**
+     * Checked element index
+     *
+     * @type {number}
+     */
+    this.checkedIndex = null;
+
+
+    for ( index = 0; index < config.data.length; index++ ) {
+        this.group.push(new CheckBox({
+            group: groupName,
+            value: config.data[index].state
+        }));
+        if ( config.data[index].state ) {
+            this.checkedData = config.data[index];
+            this.checkedIndex = index;
+        }
+    }
+
 
     List.call(this, config);
 
     this.addListener('click:item', function ( event ) {
-        var item = event.$item;
+        var $item = event.$item;
 
-        item.checkBox.set(true);
-        item.state = item.checkBox.value;
-        item.data.state = item.checkBox.value;
+        $item.checkBox.set(true);
+        $item.state = $item.checkBox.value;
+        $item.data.state = $item.checkBox.value;
 
-        if ( self.$checkedData !== item.data ) {
+        if ( self.checkedData !== $item.data ) {
             /**
-             * Select element from list.
+             * Select element from list
              *
-             * @event
-             *
-             * @type {Object}
-             * @property {Element} previous selected element
-             * @property {Element} current selected element
+             * @event select
+             * @property {Element} $item object
              */
-            self.emit('select', {
-                $last: self.$checkedData,
-                $curr: item
-            });
-            if ( self.$checkedData ) { self.$checkedData.state = false; }
-            self.$checkedData = item.data;
+            self.emit('select', $item);
+            if ( self.checkedData ) { self.checkedData.state = false; }
+            self.checkedData = $item.data;
+            self.checkedIndex = $item.index;
         }
     });
 }
@@ -91,18 +107,10 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
     var table = document.createElement('table'),
         tr = document.createElement('tr'),
         td = document.createElement('td'),
-        check = new CheckBox({
-            group: this.group
-        });
+        check = this.group[$item.index];
+
 
     $item.innerHTML = '';
-
-    // set state with set function to prevent multiple true values
-    if ( data.state ) {
-        check.set(true);
-        // set link to checked item
-        this.$checkedData = data;
-    }
 
     table.appendChild(tr);
 
@@ -124,19 +132,29 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
     $item.appendChild(table);
 };
 
-// RadioList.prototype.setData = function ( config ) {
-//     var i;
-//
-//     List.prototype.setData.call(this, config);
-//
-//     for ( i = 0; i < this.data.length; i++ ) {
-//         if ( this.data[i].state ) {
-//             this.$checkedData = this.data[i];
-//             break;
-//         }
-//     }
-//
-// };
+/**
+ * Check element by index
+ *
+ * @param {number} index of element to check
+ */
+RadioList.prototype.checkIndex = function ( index ) {
+    if ( DEVELOP ) {
+        if ( index >= this.data.length ) {
+            throw new Error(__filename + ': wrong index to check');
+        }
+    }
+
+    // do not need to do the same
+    if ( index === this.checkedIndex ) { return; }
+
+
+    this.group[index].set(true);
+    this.data[index].state = true;
+    this.data[this.checkedIndex].state = false;
+    this.checkedData = this.data[index];
+    this.checkedIndex = index;
+};
+
 
 RadioList.prototype.renderItem = RadioList.prototype.renderItemDefault;
 
