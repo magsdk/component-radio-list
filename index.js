@@ -1,6 +1,6 @@
 /**
  * @license The MIT License (MIT)
- * @copyright Stanislav Kalashnik <darkpark.main@gmail.com>
+ * @copyright Aleynikov Boris <alynikov.boris@gmail.com>
  */
 
 /* eslint no-path-concat: 0 */
