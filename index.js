@@ -1,6 +1,6 @@
 /**
  * @license The MIT License (MIT)
- * @copyright Aleynikov Boris <alynikov.boris@gmail.com>
+ * @copyright Boris Aleynikov <aleynikov.boris@gmail.com>
  */
 
 /* eslint no-path-concat: 0 */
