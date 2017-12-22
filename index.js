@@ -7,9 +7,9 @@
 
 'use strict';
 
-var List = require('mag-component-list'),
-    CheckBox = require('spa-component-checkbox'),
-    counter = 0;
+var List               = require('mag-component-list'),
+    ICON_RADIO         = 'theme-icon theme-icon-radio',
+    ICON_RADIO_ACTIVE  = 'theme-icon theme-icon-radio-active';
 
 
 /**
@@ -21,20 +21,11 @@ var List = require('mag-component-list'),
  * @param {Object} [config={}] init parameters (all inherited from the parent)
  */
 function RadioList ( config ) {
-    var self = this,
-        groupName = 'radio-list-' + counter++,
-        index;
+    var self = this;
 
 
     /**
-     * Array of checkbox components
-     *
-     * @type {Array}
-     */
-    this.group = [];
-
-    /**
-     * Link to checked item
+     * Checked item data
      *
      * @type {Element}
      */
@@ -47,27 +38,12 @@ function RadioList ( config ) {
      */
     this.checkedIndex = null;
 
-
-    for ( index = 0; index < config.data.length; index++ ) {
-        this.group.push(new CheckBox({
-            group: groupName,
-            value: config.data[index].state
-        }));
-        if ( config.data[index].state ) {
-            this.checkedData = config.data[index];
-            this.checkedIndex = index;
-        }
-    }
-
-
     List.call(this, config);
 
     this.addListener('click:item', function ( event ) {
         var $item = event.$item;
 
-        $item.checkBox.set(true);
-        $item.state = $item.checkBox.value;
-        $item.data.state = $item.checkBox.value;
+        self.checkIndex($item.index);
 
         if ( self.checkedData !== $item.data ) {
             /**
@@ -77,9 +53,6 @@ function RadioList ( config ) {
              * @property {Element} $item object
              */
             self.emit('select', $item);
-            if ( self.checkedData ) { self.checkedData.state = false; }
-            self.checkedData = $item.data;
-            self.checkedIndex = $item.index;
         }
     });
 }
@@ -91,45 +64,67 @@ RadioList.prototype.constructor = RadioList;
 // set component name
 RadioList.prototype.name = 'mag-component-radio-list';
 
-RadioList.prototype.group = 0;
+RadioList.prototype.init = function ( config ) {
+    config = config || {};
+    List.prototype.init.call(this, config);
+};
 
 
 /**
  * Default render function
  *
  * @param {Element} $item in list
- * @param {Array} data to render layout element
+ * @param {Object} data to render layout element
  * @param {string} [data.title] title of checkbox
  * @param {boolean} [data.state] state of checkbox: checked or not
  * @param {string} [data.value] special value of item
  */
 RadioList.prototype.renderItemDefault = function ( $item, data ) {
-    var table = document.createElement('table'),
-        tr = document.createElement('tr'),
-        td = document.createElement('td'),
-        check = this.group[$item.index];
+    var table,
+        tr,
+        td,
+        check;
+
+    if ( $item.ready ) {
+        $item.$title.innerText = data.title || '';
+        $item.checkBox.className = data.state ? ICON_RADIO_ACTIVE : ICON_RADIO;
+
+        $item.state = data.state;
+        $item.value = data.value;
+
+    } else {
+        table = document.createElement('table');
+        tr = document.createElement('tr');
+        td = document.createElement('td');
+        check = document.createElement('div');
+        check.className = data.state ? ICON_RADIO_ACTIVE : ICON_RADIO;
+
+        table.appendChild(tr);
+        td.appendChild(check);
 
 
-    $item.innerHTML = '';
+        td.className = 'checkBoxWrapper';
+        tr.appendChild(td);
 
-    table.appendChild(tr);
+        td = document.createElement('td');
+        td.className = 'title';
+        td.innerText = data.title || '';
+        tr.appendChild(td);
 
-    td.appendChild(check.$node);
-    td.className = 'checkBoxWrapper';
-    tr.appendChild(td);
+        $item.checkBox = check;
+        $item.state = data.state;
+        $item.value = data.value;
+        $item.$title = td;
 
-    td = document.createElement('td');
-    td.className = 'title';
-    td.innerText = data.title || '';
-    tr.appendChild(td);
+        $item.appendChild(table);
 
-    $item.checkBox = check;
+        if ( data.state ) {
+            this.checkedData = data;
+            this.checkedIndex = $item.index;
+        }
 
-    $item.state = check.value;
-    $item.value = data.value;
-
-
-    $item.appendChild(table);
+        $item.ready = true;
+    }
 };
 
 /**
@@ -138,6 +133,8 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
  * @param {number} index of element to check
  */
 RadioList.prototype.checkIndex = function ( index ) {
+    var node;
+
     if ( DEVELOP ) {
         if ( index >= this.data.length ) {
             throw new Error(__filename + ': wrong index to check');
@@ -147,16 +144,35 @@ RadioList.prototype.checkIndex = function ( index ) {
     // do not need to do the same
     if ( index === this.checkedIndex ) { return; }
 
+    console.log('Check index ' + index);
 
-    this.group[index].set(true);
+    if ( this.checkedIndex !== null && this.$node.children.length ) {
+        this.data[this.checkedIndex].state = false;
+        node = this.getItemNodeByIndex(this.checkedIndex);
+        if ( node ) {
+            node.checkBox.className = ICON_RADIO;
+        }
+    }
+
+    node = this.getItemNodeByIndex(index);
+    if ( node ) {
+        node.checkBox.className = ICON_RADIO_ACTIVE;
+        node.state = true;
+    }
+
     this.data[index].state = true;
-    this.data[this.checkedIndex].state = false;
     this.checkedData = this.data[index];
     this.checkedIndex = index;
 };
 
+RadioList.prototype.getItemNodeByIndex = function ( index ) {
+    var children = this.$node.children;
+
+    if ( index <= this.size + this.viewIndex && this.data.length - this.viewIndex >= this.size ) {
+        return children[index - this.viewIndex];
+    }
+};
 
 RadioList.prototype.renderItem = RadioList.prototype.renderItemDefault;
-
 
 module.exports = RadioList;
