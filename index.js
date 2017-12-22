@@ -74,7 +74,7 @@ RadioList.prototype.init = function ( config ) {
  * Default render function
  *
  * @param {Element} $item in list
- * @param {object} data to render layout element
+ * @param {Object} data to render layout element
  * @param {string} [data.title] title of checkbox
  * @param {boolean} [data.state] state of checkbox: checked or not
  * @param {string} [data.value] special value of item
@@ -170,8 +170,6 @@ RadioList.prototype.getItemNodeByIndex = function ( index ) {
 
     if ( index <= this.size + this.viewIndex && this.data.length - this.viewIndex >= this.size ) {
         return children[index - this.viewIndex];
-    } else {
-        return null;
     }
 };
 
