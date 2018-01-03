@@ -171,6 +171,8 @@ RadioList.prototype.getItemNodeByIndex = function ( index ) {
     if ( index <= this.size + this.viewIndex && this.data.length - this.viewIndex >= this.size ) {
         return children[index - this.viewIndex];
     }
+
+    return false;
 };
 
 RadioList.prototype.renderItem = RadioList.prototype.renderItemDefault;
