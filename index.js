@@ -41,11 +41,12 @@ function RadioList ( config ) {
     List.call(this, config);
 
     this.addListener('click:item', function ( event ) {
-        var $item = event.$item;
+        var $item = event.$item,
+            previousCheckedData = self.checkedData;
 
         self.checkIndex($item.index);
 
-        if ( self.checkedData !== $item.data ) {
+        if ( previousCheckedData !== $item.data ) {
             /**
              * Select element from list
              *
