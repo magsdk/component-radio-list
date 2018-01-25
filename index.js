@@ -103,7 +103,6 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
         table.appendChild(tr);
         td.appendChild(check);
 
-
         td.className = 'checkBoxWrapper';
         tr.appendChild(td);
 
@@ -145,8 +144,6 @@ RadioList.prototype.checkIndex = function ( index ) {
     // do not need to do the same
     if ( index === this.checkedIndex ) { return; }
 
-    console.log('Check index ' + index);
-
     if ( this.checkedIndex !== null && this.$node.children.length ) {
         this.data[this.checkedIndex].state = false;
         node = this.getItemNodeByIndex(this.checkedIndex);
@@ -166,6 +163,13 @@ RadioList.prototype.checkIndex = function ( index ) {
     this.checkedIndex = index;
 };
 
+
+/**
+ * Get list item node by item index
+ *
+ * @param {number} index of item to find node
+ * @return {?Element} item node link
+ */
 RadioList.prototype.getItemNodeByIndex = function ( index ) {
     var children = this.$node.children;
 
@@ -173,7 +177,7 @@ RadioList.prototype.getItemNodeByIndex = function ( index ) {
         return children[index - this.viewIndex];
     }
 
-    return false;
+    return null;
 };
 
 RadioList.prototype.renderItem = RadioList.prototype.renderItemDefault;
