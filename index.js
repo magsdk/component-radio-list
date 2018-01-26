@@ -175,7 +175,7 @@ RadioList.prototype.getItemNodeByIndex = function ( index ) {
     var children = this.$node.children;
 
     index -= this.viewIndex;
-    if ( index <= this.size && index >= 0 ) {
+    if ( index < this.size && index >= 0 ) {
         return children[index];
     }
 
