@@ -94,6 +94,7 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
         $item.value = data.value;
 
     } else {
+        $item.innerHTML = '';
         table = document.createElement('table');
         tr = document.createElement('tr');
         td = document.createElement('td');
@@ -173,8 +174,9 @@ RadioList.prototype.checkIndex = function ( index ) {
 RadioList.prototype.getItemNodeByIndex = function ( index ) {
     var children = this.$node.children;
 
-    if ( index <= this.size + this.viewIndex && this.data.length - this.viewIndex >= this.size ) {
-        return children[index - this.viewIndex];
+    index -= this.viewIndex;
+    if ( index < this.size && index >= 0 ) {
+        return children[index];
     }
 
     return null;
