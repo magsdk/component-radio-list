@@ -17,12 +17,12 @@
         "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
     "dependencies": {
-        "mag-component-list": "1.*.*",
-        "stb-component": "1.*.*",
-        "spa-component-checkbox": "1.*.*"
+        "mag-component-list": "^1.2.1",
+        "spa-component-checkbox": "^1.0.0",
+        "stb-component": "^1.4.0"
     },
     "devDependencies": {
-        "jsdoc": "3.*.*",
+        "jsdoc": "^3.5.5",
         "mag-eslint": "^1.0.0"
     },
     "keywords": [
