@@ -20,10 +20,18 @@ var List               = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
+ * @param {String} [config.iconClass] icon default state class name
+ * @param {String} [config.iconActiveClass] icon active state class name
  */
 function RadioList ( config ) {
     var self = this;
 
+    if ( config.iconClass ) {
+        ICON_RADIO = config.iconClass;
+    }
+    if ( config.iconActiveClass ) {
+        ICON_RADIO_ACTIVE = config.iconActiveClass;
+    }
 
     /**
      * Checked item data
