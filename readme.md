@@ -1,5 +1,5 @@
-Footer component
-================
+Radio list component
+====================
 
 [![build status](https://img.shields.io/travis/magsdk/component-radio-list.svg?style=flat-square)](https://travis-ci.org/magsdk/component-radio-list)
 [![npm version](https://img.shields.io/npm/v/mag-component-radio-list.svg?style=flat-square)](https://www.npmjs.com/package/mag-component-radio-list)
@@ -8,7 +8,8 @@ Footer component
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/magsdk)
 
 
-Footer is a component to build user interface, an instance of [Component](https://github.com/stbsdk/component) module.
+Radio list is a component to build user interface, an instance of [Component](https://github.com/spasdk/component) module.
+It is based on [mag-component-list](https://github.com/magsdk/component-list).
 
 
 ## Installation ##
@@ -31,12 +32,52 @@ Create radio list instance:
 ```js
 var radioList = new RadioList({
     focusIndex: 0,
+    classIcon: 'theme-icon theme-icon-checkbox',
+    classIconActive: 'theme-icon theme-icon-checkbox-active',
+    classChecked: 'checked',
     data: [
         {state: false, title: 'Some title 1', value: 'string'},
         {state: true, title: 'Some title 2', value: 'number'},
         {state: false, title: 'Some title 3', value: 'object'}
     ]
 });
+```
+
+To change data after creation:
+
+```js
+radioList.setData({
+    focusIndex: 0,
+    data: [
+        {state: false, title: 'Some title 1', value: 'value 1'},
+        {state: true, title: 'Some title 2', value: 'value 2'},
+        {state: false, title: 'Some title 3', value: 'value 3'}
+    ]
+});
+```
+
+To change item state:
+
+```js
+radioList.checkIndex(index);
+```
+
+To reset to init state (data and focusIndex):
+
+```js
+radioList.resetData();
+```
+
+To uncheck all items:
+
+```js
+radioList.clearChecked(newFocusPosition);
+```
+
+To get checked item data:
+
+```js
+console.log(radioList.checkedData);
 ```
 
 
