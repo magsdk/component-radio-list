@@ -1,6 +1,6 @@
 {
     "name": "mag-component-radio-list",
-    "version": "2.0.2",
+    "version": "2.3.0",
     "description": "Base radio list implementation.",
     "author": {
         "name": "Stanislav Kalashnik",
@@ -17,17 +17,17 @@
         "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
     "dependencies": {
-        "mag-component-list": "1.*.*",
-        "stb-component": "1.*.*",
-        "spa-component-checkbox": "1.*.*"
+        "mag-component-list": "^1.2.2",
+        "spa-component-checkbox": "^1.0.1",
+        "stb-component": "^1.4.1"
     },
     "devDependencies": {
-        "eslint": "4.*.*",
-        "jsdoc": "3.*.*",
-        "mag-eslint-config": "1.*.*"
+        "jsdoc": "^3.5.5",
+        "mag-eslint": "^1.0.1"
     },
     "keywords": [
         "mag",
+        "sdk",
         "magsdk",
         "framework",
         "visual",

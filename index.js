@@ -7,9 +7,10 @@
 
 'use strict';
 
-var List               = require('mag-component-list'),
-    ICON_RADIO         = 'theme-icon theme-icon-radio',
-    ICON_RADIO_ACTIVE  = 'theme-icon theme-icon-radio-active';
+var List             = require('mag-component-list'),
+    classChecked     = 'checked',
+    classIcon        = 'theme-icon theme-icon-radio',
+    classIconActive  = 'theme-icon theme-icon-radio-active';
 
 
 /**
@@ -19,10 +20,22 @@ var List               = require('mag-component-list'),
  * @extends List
  *
  * @param {Object} [config={}] init parameters (all inherited from the parent)
+ * @param {string} [config.classIcon] icon default state class name
+ * @param {string} [config.classIconActive] icon active state class name
+ * @param {string} [config.classChecked] checked item class
  */
 function RadioList ( config ) {
     var self = this;
 
+    if ( config.classIcon ) {
+        classIcon = config.classIcon;
+    }
+    if ( config.classIconActive ) {
+        classIconActive = config.classIconActive;
+    }
+    if ( config.classChecked ) {
+        classIcon = config.classChecked;
+    }
 
     /**
      * Checked item data
@@ -72,6 +85,54 @@ RadioList.prototype.init = function ( config ) {
 
 
 /**
+ * Set data and render inner structures and HTML.
+ *
+ * @param {Object} config init parameters (subset of constructor config params)
+ */
+RadioList.prototype.setData = function ( config ) {
+    List.prototype.setData.call(this, config);
+
+    this.defaultCheckedIndex = this.checkedIndex;
+
+    if ( this.$focusItem ) {
+        this.defaultFocusIndex = this.$focusItem.index;
+    } else {
+        this.defaultFocusIndex = 0;
+    }
+};
+
+
+/**
+ * Reset data to default state and render inner structures and HTML.
+ */
+RadioList.prototype.resetData = function () {
+    this.checkIndex(this.defaultCheckedIndex);
+    this.focusIndex(this.defaultFocusIndex);
+};
+
+
+/**
+ * Set all states to false and render inner structures and HTML.
+ *
+ * @param {number} [focusIndex] focus index
+ */
+RadioList.prototype.clearChecked = function ( focusIndex ) {
+    var index = 0;
+
+    for ( index; index < this.data.length; index++ ) {
+        this.data[index].state = false;
+    }
+
+    // no focusIndex, focusIndex may be 0
+    if ( !focusIndex && focusIndex !== 0 ) {
+        focusIndex = this.$focusItem ? this.$focusItem.index : 0;
+    }
+
+    this.setData({data: this.data, focusIndex: focusIndex});
+};
+
+
+/**
  * Default render function
  *
  * @param {Element} $item in list
@@ -88,17 +149,32 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
 
     if ( $item.ready ) {
         $item.$title.innerText = data.title || '';
-        $item.checkBox.className = data.state ? ICON_RADIO_ACTIVE : ICON_RADIO;
+
+        if ( data.state ) {
+            $item.classList.add(classChecked);
+            $item.checkBox.className = classIconActive;
+        } else {
+            $item.classList.remove(classChecked);
+            $item.checkBox.className = classIcon;
+        }
 
         $item.state = data.state;
         $item.value = data.value;
 
     } else {
+        $item.innerHTML = '';
         table = document.createElement('table');
         tr = document.createElement('tr');
         td = document.createElement('td');
         check = document.createElement('div');
-        check.className = data.state ? ICON_RADIO_ACTIVE : ICON_RADIO;
+
+        if ( data.state ) {
+            $item.classList.add(classChecked);
+            check.className = classIconActive;
+        } else {
+            $item.classList.remove(classChecked);
+            check.className = classIcon;
+        }
 
         table.appendChild(tr);
         td.appendChild(check);
@@ -127,13 +203,14 @@ RadioList.prototype.renderItemDefault = function ( $item, data ) {
     }
 };
 
+
 /**
  * Check element by index
  *
  * @param {number} index of element to check
  */
 RadioList.prototype.checkIndex = function ( index ) {
-    var node;
+    var $node;
 
     if ( DEVELOP ) {
         if ( index >= this.data.length ) {
@@ -146,16 +223,18 @@ RadioList.prototype.checkIndex = function ( index ) {
 
     if ( this.checkedIndex !== null && this.$node.children.length ) {
         this.data[this.checkedIndex].state = false;
-        node = this.getItemNodeByIndex(this.checkedIndex);
-        if ( node ) {
-            node.checkBox.className = ICON_RADIO;
+        $node = this.getItemNodeByIndex(this.checkedIndex);
+        if ( $node ) {
+            $node.checkBox.className = classIcon;
+            $node.classList.remove(classChecked);
         }
     }
 
-    node = this.getItemNodeByIndex(index);
-    if ( node ) {
-        node.checkBox.className = ICON_RADIO_ACTIVE;
-        node.state = true;
+    $node = this.getItemNodeByIndex(index);
+    if ( $node ) {
+        $node.checkBox.className = classIconActive;
+        $node.classList.add(classChecked);
+        $node.state = true;
     }
 
     this.data[index].state = true;
@@ -173,8 +252,9 @@ RadioList.prototype.checkIndex = function ( index ) {
 RadioList.prototype.getItemNodeByIndex = function ( index ) {
     var children = this.$node.children;
 
-    if ( index <= this.size + this.viewIndex && this.data.length - this.viewIndex >= this.size ) {
-        return children[index - this.viewIndex];
+    index -= this.viewIndex;
+    if ( index < this.size && index >= 0 ) {
+        return children[index];
     }
 
     return null;
