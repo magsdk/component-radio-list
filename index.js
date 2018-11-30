@@ -90,6 +90,8 @@ RadioList.prototype.init = function ( config ) {
  * @param {Object} config init parameters (subset of constructor config params)
  */
 RadioList.prototype.setData = function ( config ) {
+    var  self = this;
+
     List.prototype.setData.call(this, config);
 
     this.defaultCheckedIndex = this.checkedIndex;
@@ -99,6 +101,14 @@ RadioList.prototype.setData = function ( config ) {
     } else {
         this.defaultFocusIndex = 0;
     }
+
+    this.data.forEach(function ( value, index ) {
+        if ( value.state === true ) {
+            self.checkedIndex = index;
+            self.checkedData = value;
+            self.focusIndex(index);
+        }
+    });
 };
 
 
