@@ -90,8 +90,7 @@ RadioList.prototype.init = function ( config ) {
  * @param {Object} config init parameters (subset of constructor config params)
  */
 RadioList.prototype.setData = function ( config ) {
-    var self = this,
-        index;
+    var index;
 
     List.prototype.setData.call(this, config);
 
@@ -103,9 +102,9 @@ RadioList.prototype.setData = function ( config ) {
         this.defaultFocusIndex = 0;
     }
 
-    for ( index = 0; index < self.data.length; index++ ) {
-        if ( self.data[index].state === true ) {
-            self.checkIndex(index);
+    for ( index = 0; index < this.data.length; index++ ) {
+        if ( this.data[index].state === true ) {
+            this.checkIndex(index);
             break;
         }
     }
