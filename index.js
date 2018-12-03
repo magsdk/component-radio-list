@@ -102,6 +102,8 @@ RadioList.prototype.setData = function ( config ) {
         this.defaultFocusIndex = 0;
     }
 
+    this.checkedData = this.checkedIndex = null;
+    
     for ( index = 0; index < this.data.length; index++ ) {
         if ( this.data[index].state === true ) {
             this.checkIndex(index);
